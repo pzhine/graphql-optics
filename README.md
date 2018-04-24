@@ -1,6 +1,7 @@
 # GraphQL Optics
 
 [![CircleCI](https://circleci.com/gh/kiwicom/graphql-optics.svg?style=svg)](https://circleci.com/gh/kiwicom/graphql-optics)
+
 Tracing library and analyitcs dashboard for GraphQL. Engineered as an extensible replacement for ApolloEnging.
 
 ## Usage with `graphql-express` and `apollo-tracing`
