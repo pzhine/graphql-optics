@@ -42,7 +42,7 @@ app.use('/', (request, response) => {
 
 ## API
 
-##### formatEntry({ request, metrics })
+#### formatEntry({ request, metrics })
 
 Formats a graphQL query for logging.
 
@@ -60,7 +60,7 @@ Ex: return value of apolloTracing.formatTraceData.
 
 Returns an object to be passed to logEntry
 
-##### logEntry({ entry, options })
+#### logEntry({ entry, options })
 
 Sends entry data to ElasticSearch for indexing
 
