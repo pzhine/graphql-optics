@@ -1,0 +1,23 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": "commonjs",
+        "exclude": [
+          "transform-regenerator",
+          "transform-async-to-generator"
+        ],
+        "targets": {
+          "node": "6.10.3"
+        }
+      }
+    ],
+    "flow"
+  ],
+  "plugins": [
+    "fast-async",
+    "transform-object-rest-spread",
+    "transform-class-properties"
+  ]
+}
