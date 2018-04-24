@@ -2,6 +2,6 @@
   "name": "graphql-optics",
   "version": "0.0.1",
   "scripts": {
-    "install": "cd ./packages/tracer/ && yarn build"
+    "install": "cd packages/tracer/ && yarn build"
   }
 }
