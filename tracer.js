@@ -1,1 +1,1 @@
-module.exports = require('./packages/tracer/src/tracer')
+module.exports = require('./packages/tracer/dist/tracer')
