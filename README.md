@@ -7,6 +7,7 @@ Tracing library and analyitcs dashboard for GraphQL. Engineered as an extensible
 ## Usage with `graphql-express` and `apollo-tracing`
 
 Install the package
+
 ```
 yarn add graphql-optics-tracer
 ```
@@ -20,7 +21,7 @@ import {
   TraceCollector,
   instrumentSchemaForTracing,
   formatTraceData,
-} from 'apollo-tracing';
+} from 'apollo-tracing'
 
 app.use('/', (request, response) => {
   // start the timer
@@ -30,14 +31,14 @@ app.use('/', (request, response) => {
   graphqlHTTP((req, res, params) => ({
     schema: instrumentSchemaForTracing(schema),
     extensions: req => {
-      traceCollector.requestDidEnd();
-      const definitions = req.document.definitions;
-      const graphql = graphQLParams.query;
-      const metrics = formatTraceData(traceCollector);
-      const entry = formatEntry({ request: { definitions, graphql }, metrics });
-      logEntry({ entry });
-      return {};
-    }
+      traceCollector.requestDidEnd()
+      const definitions = req.document.definitions
+      const graphql = graphQLParams.query
+      const metrics = formatTraceData(traceCollector)
+      const entry = formatEntry({ request: { definitions, graphql }, metrics })
+      logEntry({ entry })
+      return {}
+    },
   }))(request, response)
 })
 ```
@@ -49,6 +50,7 @@ app.use('/', (request, response) => {
 Formats a graphQL query for logging.
 
 _request_
+
 ```
 {
   definitions,  // from express-graphql
@@ -73,6 +75,7 @@ _options_
 ElasticSearch options.
 
 Defaults:
+
 ```
 {
   elasticIndex: 'graphql',
@@ -80,5 +83,21 @@ Defaults:
     host: 'localhost:9200',
     log: 'trace',
   },
+}
+```
+
+## Configuring aggregations
+
+Before constructing the aggregations, you will need to run the following against your elasticsearch instance.
+
+```
+PUT graphql/_mapping/graphql?update_all_types
+{
+  "properties": {
+    "rootQuery": {
+      "type":     "text",
+      "fielddata": true
+    }
+  }
 }
 ```

@@ -118,6 +118,7 @@ describe('logEntry', () => {
       id: uuid(),
       index: 'graphql',
       body: expect.anything(),
+      type: 'graphql',
     });
   });
 });
