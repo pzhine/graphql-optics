@@ -1,7 +1,10 @@
 {
-  "main": "index.js",
+  "main": "dist/index.js",
+  "name": "graphql-optics-tracer",
+  "version": "0.0.1",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

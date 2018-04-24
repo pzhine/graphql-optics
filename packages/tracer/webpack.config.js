@@ -2,14 +2,14 @@
 
 const path = require('path');
 
-const appDirectory = path.resolve(__dirname, '..');
+const appDirectory = __dirname;
 
 module.exports = () => ({
   context: appDirectory,
   entry: './src/tracer.js',
   output: {
     path: path.resolve(appDirectory, 'dist'),
-    filename: '[name].js',
+    filename: 'index.js',
     libraryTarget: 'commonjs2',
   },
   module: {
