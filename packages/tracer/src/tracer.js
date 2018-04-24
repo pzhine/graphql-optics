@@ -47,9 +47,10 @@ export function logEntry({
   const _options = options
     ? deepmerge(defaultOptions, options)
     : defaultOptions;
-  const elasticClient = new elastic.Client(_options.elasticClient);
+  const elasticClient = new elastic.Client({ ..._options.elasticClient });
   elasticClient.create({
     index: _options.elasticIndex,
+    type: 'graphql',
     id: uuid(),
     body: entry,
   });
