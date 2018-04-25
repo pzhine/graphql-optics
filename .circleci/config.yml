@@ -12,6 +12,9 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
       - run: yarn install
+      - run: cd packages/tracer
+      - run: yarn install
+      - run: cd -
       - save_cache:
           paths:
             - node_modules
