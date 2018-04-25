@@ -20,7 +20,6 @@ class App extends React.Component {
         },
       })
       .then(data => {
-        console.log(data)
         this.setState({
           aggregations: data.aggregations.rootQueries.buckets,
         })
@@ -32,6 +31,9 @@ class App extends React.Component {
     this.state = {
       aggregations: [],
     }
+  }
+
+  componentDidMount() {
     this.loadAggregations()
   }
 
