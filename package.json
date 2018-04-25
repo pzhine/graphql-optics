@@ -53,6 +53,6 @@
     "moduleNameMapper": {
       "\\.(css)$": "identity-obj-proxy"
     },
-    "testRegex": ".*\\.test\\.js"
+    "testRegex": ".*\\.test\\.js$"
   }
 }
