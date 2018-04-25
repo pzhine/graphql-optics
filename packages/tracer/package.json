@@ -23,7 +23,6 @@
     "eslint-plugin-jest": "^20.0.3",
     "eslint-plugin-prettier": "^2.1.2",
     "eslint-plugin-promise": "^3.5.0",
-    "fast-async": "^6.2.2",
     "flow-bin": "^0.64.0",
     "jest": "^20.0.4",
     "prettier": "^1.5.2",
