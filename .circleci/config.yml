@@ -17,6 +17,3 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
-      - run: cd packages/tracer
-      - run: yarn test
-      - run: cd -
