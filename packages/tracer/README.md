@@ -1,6 +1,8 @@
-# graphql-optics-tracer [![CircleCI](https://circleci.com/gh/kiwicom/graphql-optics.svg?style=svg)](https://circleci.com/gh/kiwicom/graphql-optics)
+# graphql-optics-tracer
 
-Tracing library and analyitcs dashboard for GraphQL. Engineered as an extensible replacement for ApolloEnging.
+[![CircleCI](https://circleci.com/gh/kiwicom/graphql-optics.svg?style=svg)](https://circleci.com/gh/kiwicom/graphql-optics)
+
+Tracing library for GraphQL. Designed to work with graphql-express and apollo-tracing, but generic enough to use with other graphql servers and tracing packages.
 
 ## Usage with `graphql-express` and `apollo-tracing`
 
@@ -43,9 +45,11 @@ app.use('/', (request, response) => {
 
 ## API
 
-#### formatEntry({ request, metrics })
+#### formatEntry
 
 Formats a graphQL query for logging.
+
+##### Arguments: ({ request, metrics })
 
 _request_
 
@@ -62,9 +66,11 @@ Ex: return value of apolloTracing.formatTraceData.
 
 Returns an object to be passed to logEntry
 
-#### logEntry({ entry, options })
+#### logEntry
 
 Sends entry data to ElasticSearch for indexing
+
+##### Arguments: ({ entry, options })
 
 _entry_ (required)  
 Return value of formatEntry

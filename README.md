@@ -16,7 +16,7 @@ Follow the installation and usage instructions in the [graphql-optics-tracing](p
 
 ## Launching the dashboard
 
-Configure your app in `src/config.json`. If you're using [graphql-optics-tracing](packages/tracer), these should match the options you pass to [logEntry](packages/tracer/blob/master/README.md#log-entry).
+Configure your app in `src/config.json`. If you're using [graphql-optics-tracing](packages/tracer), these should match the options you pass to [logEntry](packages/tracer#log-entry).
 
 Install dependencies and launch the app.
 
