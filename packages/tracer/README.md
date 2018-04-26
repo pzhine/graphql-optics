@@ -92,13 +92,13 @@ Defaults:
 
 ## Configuring elastic mappings
 
-Before constructing the aggregations, you will need to run the following against your elasticsearch instance. Replace `graphql_test` with the name of the index you will use in your app.
+Before constructing the aggregations, you will need to run the following against your elasticsearch instance. If necessary, replace `graphql` with the name of the index you will use in your app.
 
 ```
-PUT graphql_test
+PUT graphql
 {}
 
-PUT graphql_test/_mapping/graphql
+PUT graphql/_mapping/graphql
 {
   "properties": {
     "rootQuery": {
