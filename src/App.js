@@ -25,9 +25,8 @@ class App extends React.Component {
   }
 
   loadAggregations() {
-    if (this.state.aggregations.length) {
-      return
-    }
+    if (this.state.aggregations.length) return
+    
     server
       .search({
         index: config.elastic_index,
@@ -51,14 +50,11 @@ class App extends React.Component {
 
   loadQueries() {
     const match = matchPath(this.props.location.pathname, { path: queryPath })
-    if (!match) {
-      return
-    }
+    if (!match) return
     const rootQuery = match.params.rootQuery
     const query = this.state.queries[rootQuery]
-    if (query) {
-      return
-    }
+    if (query) return
+    
     server
       .search({
         index: config.elastic_index,
@@ -133,9 +129,7 @@ class App extends React.Component {
           path={metricsPath}
           render={({ match }) => {
             const queries = this.state.queries[match.params.rootQuery]
-            if (!queries) {
-              return 'loading...'
-            }
+            if (!queries) return 'loading...'
             const trace = queries.find(t => t._id === match.params.queryId)
             return (
               <DataColumn>
