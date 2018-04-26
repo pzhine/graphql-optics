@@ -25,9 +25,8 @@ class App extends React.Component {
   }
 
   loadAggregations() {
-    if (this.state.aggregations.length) {
-      return
-    }
+    if (this.state.aggregations.length) return
+
     server
       .search({
         index: config.elastic_index,
@@ -56,9 +55,8 @@ class App extends React.Component {
     }
     const rootQuery = match.params.rootQuery
     const query = this.state.queries[rootQuery]
-    if (query) {
-      return
-    }
+    if (query) return
+
     server
       .search({
         index: config.elastic_index,
