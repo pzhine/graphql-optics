@@ -12,8 +12,8 @@ import config from './config.json'
 import './styles/globals.css'
 
 const aggPath = '/:_?/:rootQuery?'
-const queryPath = '/aggregations/:rootQuery/:queryId?'
-const metricsPath = '/aggregations/:rootQuery/:queryId'
+const metricsPath = '/aggregations/:rootQuery/:queryId?'
+const queryPath = '/aggregations/:rootQuery/:queryId'
 
 class App extends React.Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class App extends React.Component {
   }
 
   loadQueries() {
-    const match = matchPath(this.props.location.pathname, { path: queryPath })
+    const match = matchPath(this.props.location.pathname, { path: metricsPath })
     if (!match) {
       return
     }
@@ -63,6 +63,13 @@ class App extends React.Component {
       .search({
         index: config.elastic_index,
         body: {
+          sort: [
+            {
+              'metrics.duration': {
+                order: 'desc',
+              },
+            },
+          ],
           query: {
             match: {
               rootQuery,
@@ -111,16 +118,16 @@ class App extends React.Component {
           )}
         />
         <Route
-          path={queryPath}
+          path={metricsPath}
           render={({ match, location }) => {
             const queries = this.state.queries[match.params.rootQuery]
             return (
               <DataColumn>
                 {queries
                   ? queries.map(query => (
-                      <Query
+                      <Metrics
                         key={query._id}
-                        query={query}
+                        trace={query}
                         isActive={match.params.queryId === query._id}
                       />
                     ))
@@ -130,16 +137,16 @@ class App extends React.Component {
           }}
         />
         <Route
-          path={metricsPath}
+          path={queryPath}
           render={({ match }) => {
             const queries = this.state.queries[match.params.rootQuery]
             if (!queries) {
               return 'loading...'
             }
-            const trace = queries.find(t => t._id === match.params.queryId)
+            const query = queries.find(t => t._id === match.params.queryId)
             return (
               <DataColumn>
-                {trace ? <Metrics trace={trace} /> : 'loading...'}
+                {query ? <Query query={query} /> : 'loading...'}
               </DataColumn>
             )
           }}
