@@ -15,4 +15,4 @@ exports[`renders correctly 1`] = `
 >
   {allLocations(search: "Boulder")})
 </div>
-`;
+`
